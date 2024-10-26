@@ -7,7 +7,7 @@ from langchain_openai import ChatOpenAI
 
 load_dotenv()
 
-def qrcodes_generater():
+def python_agent():
     print("start...")
 
     instructions = """ You are an agent designed to write and execute python code to answer questions.
@@ -35,7 +35,7 @@ def qrcodes_generater():
         }
     )
 
-def csv():
+def csv_agent():
     print("start...")
 
     csv_agent = create_csv_agent(
@@ -52,6 +52,6 @@ def csv():
 
 
 if __name__ == '__main__':
-    # qrcodes_generater()
-    csv()
+    # python_agent()
+    csv_agent()
 
