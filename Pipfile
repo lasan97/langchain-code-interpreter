@@ -5,6 +5,12 @@ name = "pypi"
 
 [packages]
 langchain = "*"
+langchain-community = "*"
+langchainhub = "*"
+langchain-openai = "*"
+langchain-experimental = "*"
+qrcode = "*"
+pillow = "*"
 
 [dev-packages]
 
