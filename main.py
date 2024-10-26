@@ -1,12 +1,13 @@
 from dotenv import load_dotenv
 from langchain import hub
+from langchain.agents import create_react_agent, AgentExecutor, AgentType
+from langchain_experimental.agents import create_csv_agent
 from langchain_experimental.tools import PythonREPLTool
 from langchain_openai import ChatOpenAI
-from langchain.agents import create_react_agent, AgentExecutor
 
 load_dotenv()
 
-def main():
+def qrcodes_generater():
     print("start...")
 
     instructions = """ You are an agent designed to write and execute python code to answer questions.
@@ -34,6 +35,23 @@ def main():
         }
     )
 
+def csv():
+    print("start...")
+
+    csv_agent = create_csv_agent(
+        llm=ChatOpenAI(temperature=0, model="gpt-4"),
+        path="episode_info.csv",
+        agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+        verbose=True
+    )
+
+    # csv_agent.run("how many columns are there in file episode_info.csv")
+    # csv_agent.run("which writer wrote the most episodes? how many episodes did he write?")
+    # csv_agent.run("which writer wrote the least episodes? how many episodes did he write?")
+    csv_agent.run("print seasions ascending order of the number of episodes they have")
+
+
 if __name__ == '__main__':
-    main()
+    # qrcodes_generater()
+    csv()
 
